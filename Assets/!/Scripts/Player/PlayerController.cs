@@ -67,9 +67,9 @@ namespace _.Scripts.Player
 
         public void ShowDashDirection()
         {
-            // _dashDir = GetDirection();
-            // dashPreviewObj.SetActive(true);
-            // dashPreviewObj.transform.LookAt(_dashDir);
+            _dashDir = GetDirection();
+            dashPreviewObj.SetActive(true);
+            dashPreviewObj.transform.LookAt(_dashDir);
         }
 
         public void Dash()
@@ -77,7 +77,7 @@ namespace _.Scripts.Player
             dashPreviewObj.SetActive(false);
             dashWeapon.SetActive(true);
 
-            // transform.LookAt(_dashDir);
+            transform.LookAt(_dashDir);
 
             var doDash = Observable.EveryFixedUpdate();
             var timerSubscription = doDash.Subscribe(_ =>

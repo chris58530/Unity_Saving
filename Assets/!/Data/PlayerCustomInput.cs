@@ -55,15 +55,6 @@ public partial class @PlayerCustomInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""a0cce087-9a0a-4d3f-ac60-037085b3fcd9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Roll"",
                     ""type"": ""Button"",
                     ""id"": ""272ffcce-6b5b-4c1b-9a8f-2a98a18601f3"",
@@ -197,17 +188,6 @@ public partial class @PlayerCustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5caf6ca6-7472-4b97-ab41-5631e775f3a5"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""9500a4aa-029f-456f-9e78-8e0ba280fedd"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
@@ -220,7 +200,7 @@ public partial class @PlayerCustomInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3d1887f4-d97a-4bd1-9cd8-36794a8ee072"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -238,7 +218,6 @@ public partial class @PlayerCustomInput: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Pull = m_Player.FindAction("Pull", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
     }
 
@@ -304,7 +283,6 @@ public partial class @PlayerCustomInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Pull;
-    private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Roll;
     public struct PlayerActions
     {
@@ -313,7 +291,6 @@ public partial class @PlayerCustomInput: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Pull => m_Wrapper.m_Player_Pull;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -333,9 +310,6 @@ public partial class @PlayerCustomInput: IInputActionCollection2, IDisposable
             @Pull.started += instance.OnPull;
             @Pull.performed += instance.OnPull;
             @Pull.canceled += instance.OnPull;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
             @Roll.started += instance.OnRoll;
             @Roll.performed += instance.OnRoll;
             @Roll.canceled += instance.OnRoll;
@@ -352,9 +326,6 @@ public partial class @PlayerCustomInput: IInputActionCollection2, IDisposable
             @Pull.started -= instance.OnPull;
             @Pull.performed -= instance.OnPull;
             @Pull.canceled -= instance.OnPull;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
             @Roll.started -= instance.OnRoll;
             @Roll.performed -= instance.OnRoll;
             @Roll.canceled -= instance.OnRoll;
@@ -380,7 +351,6 @@ public partial class @PlayerCustomInput: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnPull(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
     }
 }

@@ -33,15 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "a0cce087-9a0a-4d3f-ac60-037085b3fcd9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Roll",
                     "type": "Button",
                     "id": "272ffcce-6b5b-4c1b-9a8f-2a98a18601f3",
@@ -175,17 +166,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5caf6ca6-7472-4b97-ab41-5631e775f3a5",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "9500a4aa-029f-456f-9e78-8e0ba280fedd",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
@@ -198,7 +178,7 @@
                 {
                     "name": "",
                     "id": "3d1887f4-d97a-4bd1-9cd8-36794a8ee072",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
