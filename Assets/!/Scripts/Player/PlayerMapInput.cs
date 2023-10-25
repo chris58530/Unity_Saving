@@ -12,6 +12,9 @@ namespace _.Scripts.Player
         public bool IsPressedDash => _input.Player.Dash.IsPressed();
         public bool IsReleasedDash => _input.Player.Dash.WasReleasedThisFrame();
 
+        public bool IsPressedPull => _input.Player.Pull.IsPressed();
+        public bool IsReleasedPull => _input.Player.Pull.WasReleasedThisFrame();
+
         public bool Move => MoveVector.x != 0 || MoveVector.y != 0;
 
         private void Awake()

@@ -36,16 +36,16 @@ namespace _.Scripts.Player
             //_fsm Add New State
             _fsm.AddState(
                 PlayerState.Idle, new PlayerIdle(
-                    _input,_controller,false));
+                    _input, _controller, false));
             _fsm.AddState(
                 PlayerState.Walk, new PlayerWalk(
                     _input, _controller, false));
             _fsm.AddState(
                 PlayerState.Attack, new PlayerAttack(
-                    _input, _controller,false));
+                    _input, _controller, false));
             _fsm.AddState(
                 PlayerState.Pull, new PlayerPull(
-                    false));
+                    _input, _controller,false));
             _fsm.AddState(
                 PlayerState.Dash, new PlayerDash(
                     _controller, true));
@@ -60,16 +60,27 @@ namespace _.Scripts.Player
                     false));
 
             //_fsm Transition
+
+            //Idle
             _fsm.AddTwoWayTransition(PlayerState.Idle, PlayerState.Walk,
                 transition => _input.Move);
-            _fsm.AddTransition(PlayerState.Walk, PlayerState.Idle,
-                transition => !_input.Move);
             _fsm.AddTransition(PlayerState.Idle, PlayerState.Dash,
                 transition => _input.IsReleasedDash);
+            _fsm.AddTransition(PlayerState.Idle, PlayerState.Pull,
+                transition => _input.IsPressedPull);
+
+            //Walk
             _fsm.AddTransition(PlayerState.Walk, PlayerState.Dash,
                 transition => _input.IsReleasedDash);
-            
+            _fsm.AddTransition(PlayerState.Walk, PlayerState.Pull,
+                transition => _input.IsPressedPull);
+
+            //Dash
             _fsm.AddTransition(PlayerState.Dash, PlayerState.Idle);
+
+            //Pull
+            _fsm.AddTransition(PlayerState.Pull, PlayerState.Idle,
+                transition => _input.IsReleasedPull);
 
             //Initialize
             _fsm.Init();

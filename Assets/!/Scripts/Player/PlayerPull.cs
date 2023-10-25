@@ -5,8 +5,17 @@ namespace _.Scripts.Player
 {
     public class PlayerPull : StateBase<PlayerState>
     {
-        public PlayerPull(bool needsExitTime, bool isGhostState = false) : base(needsExitTime, isGhostState)
+        private Animator _animator;
+        private readonly PlayerMapInput _input;
+        private readonly PlayerController _controller;
+
+        public PlayerPull(PlayerMapInput playerMapInput,
+            PlayerController playerController,
+            bool needsExitTime,
+            bool isGhostState = false) : base(needsExitTime, isGhostState)
         {
+            _input = playerMapInput;
+            _controller = playerController;
         }
 
         public override void OnEnter()
@@ -15,10 +24,12 @@ namespace _.Scripts.Player
 
         public override void OnLogic()
         {
+            _controller.SetPullTarget();
         }
 
         public override void OnExit()
         {
+            _controller.PullTarget();
         }
     }
 }

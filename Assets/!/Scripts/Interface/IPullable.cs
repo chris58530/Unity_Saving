@@ -2,9 +2,9 @@ using UnityEngine;
 
 public interface IPullable
 {
-    bool isPulling { get; set; }
-    void Pull(Vector3 target);
+    public void Pull();
+    public Vector3 PullDirection { get; set; }
+    public void SetVisualizePullDirection(Vector3 direction);
 
-    bool HasMarked { get; set; }
-    void SetMark(bool isMark);
+
 }
