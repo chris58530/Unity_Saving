@@ -23,25 +23,23 @@ namespace _.Scripts.Player
         [SerializeField] private GameObject dashPreviewObj;
 
         [Header("Pull Setting")] [SerializeField]
-        private float extendTime;
+        private float pullTime;
 
-        [SerializeField] private float maxDistance;
-        [SerializeField] private GameObject distanceVisualizeObecjt;
-        private float _currentExtendTime;
+        [SerializeField] private float pullMaxDistance;
         private bool _stopExtend;
-        private List<IPullable> _pullTargetList = new List<IPullable>();
         private IPullable _currentPullObject;
+        private PullDetect _pullDetect;
 
         private CharacterController _controller;
 
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+            _pullDetect ??= GetComponentInChildren<PullDetect>();
         }
 
         private void Start()
         {
-            _currentExtendTime = extendTime;
         }
 
         public void Move(Vector3 dir)
@@ -114,32 +112,74 @@ namespace _.Scripts.Player
 
         #region Pull
 
-        private IPullable[] _pullableObjects;
-
         public void SetPullTarget()
         {
-            Vector3 myPosition = transform.position;
+            _pullDetect.SetDetectRange(pullMaxDistance);
+            GetTarget();
+            SetTargetPullDirection();
+        }
 
-            Collider[] colliders = Physics.OverlapSphere(myPosition, maxDistance);
-
-            _pullableObjects = new IPullable[colliders.Length];
-            int pullableCount = 0;
-
-            foreach (var collider in colliders)
+        void GetTarget()
+        {
+            if (Input.GetMouseButton(0))
             {
-                // 检查碰撞器上是否有IPullable组件
-                IPullable pullable = collider.GetComponent<IPullable>();
-                if (pullable != null)
+                var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                var layerMask = ~(1 << 2);
+
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask))
                 {
-                    // 如果是IPullable对象，将其存入数组
-                    _pullableObjects[pullableCount] = pullable;
-                    pullableCount++;
+                    GameObject hitObject = hit.collider.gameObject;
+                    Debug.Log($"{hitObject.name}");
+
+                    if (hitObject == null)
+                    {
+                        return;
+                    }
+
+                    if (hitObject.TryGetComponent<IPullable>(out var pullable))
+                    {
+                        if (_currentPullObject != null)
+                            _currentPullObject.PullDirection = Vector3.zero;
+                        if (_pullDetect.PullableObjects.Contains(pullable))
+                        {
+                            _currentPullObject = pullable;
+                        }
+
+                        Debug.Log($"選中 {hitObject.name}");
+                    }
                 }
             }
         }
 
+        void SetTargetPullDirection()
+        {
+            if (_currentPullObject == null) return;
+            if (Input.GetMouseButtonUp(0))
+            {
+                _currentPullObject = null;
+                return;
+            }
+
+            var hitpoint = Vector3.zero;
+
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity))
+            {
+                hitpoint = hitInfo.point;
+            }
+
+            // hitpoint.y = 0;
+            _currentPullObject.PullDirection = hitpoint;
+        }
+
         public void PullTarget()
         {
+            _pullDetect.SetDetectRange(0);
+            foreach (var VARIABLE in _pullDetect.PullableObjects)
+            {
+                VARIABLE.Pull();
+            }
         }
 
         #endregion

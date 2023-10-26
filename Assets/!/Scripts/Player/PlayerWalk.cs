@@ -22,7 +22,6 @@ namespace _.Scripts.Player
 
         public override void OnEnter()
         {
-            Debug.Log("Player Walk");
         }
 
         public override void OnLogic()

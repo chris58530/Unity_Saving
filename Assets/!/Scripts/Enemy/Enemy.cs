@@ -36,23 +36,15 @@ public class Enemy : MonoBehaviour, IPullable
         else visualizePullDirection.SetActive(false);
     }
 
-    // public void SetMark(bool isMark)
-    // {
-    //     if (isMark)
-    //     {
-    //         GetComponent<MeshRenderer>().material.color = Color.red;
-    //         StartCoroutine(nameof(CountingMarkTime));
-    //         return;
-    //     }
-    //
-    //     GetComponentInChildren<MeshRenderer>().material.color = Color.white;
-    // }
     public void Pull()
     {
         // _bt.SendEvent("HasStun");
+        if (PullDirection == Vector3.zero) return;
         Vector3 dir = PullDirection - transform.position;
         _rb.AddForce(dir.normalized * 10, ForceMode.Impulse);
+        PullDirection = Vector3.zero;
     }
+
     public void SetVisualizePullDirection(Vector3 direction)
     {
         visualizePullDirection.SetActive(true);
@@ -60,11 +52,4 @@ public class Enemy : MonoBehaviour, IPullable
             visualizePullDirection.transform.position.y, PullDirection.z);
         visualizePullDirection.transform.LookAt(look);
     }
-    // IEnumerator CountingMarkTime()
-    // {
-    //     yield return new WaitForSeconds(4);
-    //     SetMark(false);
-    //
-    //     yield return null;
-    // }
 }

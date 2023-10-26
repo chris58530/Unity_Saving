@@ -23,7 +23,6 @@ namespace _.Scripts.Player
 
         public override void OnEnter()
         {
-            Debug.Log("Player Idle");
         }
 
         public override void OnLogic()
