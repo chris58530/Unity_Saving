@@ -8,13 +8,13 @@ namespace Game._Scripts.BTScripts
 {
     public class Attack : Action
     {
-        public GameObject AttackObject;
+        public SharedGameObject AttackObject;
         public float KeepTime;
         private float _startTime;
 
         public override void OnStart()
         {
-            AttackObject.SetActive(true);
+            AttackObject.Value.SetActive(true);
             _startTime = Time.time;
         }
 
@@ -28,7 +28,7 @@ namespace Game._Scripts.BTScripts
 
         public override void OnEnd()
         {
-            AttackObject.SetActive(false);
+            AttackObject.Value.SetActive(false);
         }
     }
 }

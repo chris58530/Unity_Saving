@@ -22,9 +22,8 @@ namespace _.Scripts.Player
         [SerializeField] private GameObject dashWeapon;
         [SerializeField] private GameObject dashPreviewObj;
 
-        [Header("Pull Setting")] [SerializeField]
-        private float pullTime;
-
+        [Header("Pull Setting")] 
+        [SerializeField]private float pullTime;
         [SerializeField] private float pullMaxDistance;
         private bool _stopExtend;
         private IPullable _currentPullObject;
@@ -36,10 +35,6 @@ namespace _.Scripts.Player
         {
             _controller = GetComponent<CharacterController>();
             _pullDetect ??= GetComponentInChildren<PullDetect>();
-        }
-
-        private void Start()
-        {
         }
 
         public void Move(Vector3 dir)
@@ -127,7 +122,7 @@ namespace _.Scripts.Player
                 var layerMask = ~(1 << 2);
 
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask))
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
                 {
                     GameObject hitObject = hit.collider.gameObject;
                     Debug.Log($"{hitObject.name}");
@@ -181,6 +176,16 @@ namespace _.Scripts.Player
                 VARIABLE.Pull();
             }
         }
+
+        #endregion
+
+        #region Fall
+
+        public void Fall()
+        {
+            
+        }
+        
 
         #endregion
     }
