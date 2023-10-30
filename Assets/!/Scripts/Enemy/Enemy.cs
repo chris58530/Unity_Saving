@@ -3,22 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using UnityEngine;
-using BehaviorDesigner.Runtime.Tasks;
-using BehaviorDesigner.Runtime;
+
 
 public class Enemy : MonoBehaviour, IPullable
 {
     [SerializeField] private GameObject visualizePullDirection;
-
     public Vector3 PullDirection { get; set; }
 
     private BehaviorTree _bt;
     private Rigidbody _rb;
+    private MeleeEnemyData _meleeEnemyData;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        // _bt = GameObject.FindObjectOfType<BehaviorTree>();
+        _bt = GameObject.FindObjectOfType<BehaviorTree>();
+        
     }
 
     private void Start()
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour, IPullable
 
     public void Pull()
     {
-        // _bt.SendEvent("HasStun");
+        _bt.SendEvent("HasStun");
         if (PullDirection == Vector3.zero) return;
         Vector3 dir = PullDirection - transform.position;
         _rb.AddForce(dir.normalized * 10, ForceMode.Impulse);

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
-using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
@@ -17,6 +16,7 @@ public class FieldOfView : MonoBehaviour
 
     public bool canSeePlayer;
     private BehaviorTree BT;
+
 
     private void Start()
     {
