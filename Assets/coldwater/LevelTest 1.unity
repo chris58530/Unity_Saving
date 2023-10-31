@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 541117073}
   - component: {fileID: 541117072}
   - component: {fileID: 541117071}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1190,6 +1190,7 @@ MonoBehaviour:
   dashPreviewObj: {fileID: 2069557547}
   pullTime: 0
   pullMaxDistance: 0
+  pullVisualizeObject: {fileID: 0}
 --- !u!1 &1095393510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54067adb2853624dafad40c81061c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pullDistance: 0
   visualizePullDirection: {fileID: 1633175224}
 --- !u!114 &1532096919
 MonoBehaviour:
@@ -1718,7 +1720,7 @@ GameObject:
   - component: {fileID: 1721878436}
   - component: {fileID: 1721878438}
   - component: {fileID: 1721878437}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
