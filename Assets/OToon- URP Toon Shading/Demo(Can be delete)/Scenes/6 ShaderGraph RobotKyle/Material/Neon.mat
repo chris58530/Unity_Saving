@@ -149,7 +149,7 @@ Material:
     - Vector1_48bb6f524e494da799e6a2b3cc237cf8: 0
     - Vector1_85d44c600d6c46b38d9c8065f25681ea: 0
     - Vector1_c89cb8dc56774a9583c7b9c3a5725c4c: 0
-    - Vector1_e5b6f1488dec4326bd8bbd0e05156810: 0
+    - Vector1_e5b6f1488dec4326bd8bbd0e05156810: -0.06
     - _AllToon_OverrideShadowColor: 0
     - _AlphaClip: 0
     - _Blend: 0
@@ -163,7 +163,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DiffuseStep: 0
-    - _DitherTexelSize: 4
+    - _DitherTexelSize: 9.1
     - _DitherThreshold: 1
     - _DstBlend: 0
     - _EnabledHairSpec: 0
@@ -216,6 +216,7 @@ Material:
     - _OutlineWidth: 0
     - _OverrideShadowColor: 1
     - _Parallax: 0.005
+    - _QueueControl: -1
     - _QueueOffset: 0
     - _RIMLIGHTING: 1
     - _ReceiveShadows: 0
@@ -224,6 +225,7 @@ Material:
     - _RimLightSmoothness: 0.263
     - _RimLightSmootness: 0
     - _RimPower: 0.444
+    - _SPECULARHIGHLIGHTS: 0
     - _SPECULARHIGHTLIGHTS: 0
     - _ShadowPatternSize: 0.3
     - _Shininess: 0
