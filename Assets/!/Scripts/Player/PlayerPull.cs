@@ -20,7 +20,6 @@ namespace _.Scripts.Player
 
         public override void OnEnter()
         {
-            Time.timeScale = 0;
         }
 
         public override void OnLogic()
@@ -30,7 +29,6 @@ namespace _.Scripts.Player
 
         public override void OnExit()
         {
-            Time.timeScale = 1;
 
             _controller.PullTarget();
         }

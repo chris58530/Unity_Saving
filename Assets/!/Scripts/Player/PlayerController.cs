@@ -22,19 +22,29 @@ namespace _.Scripts.Player
         [SerializeField] private GameObject dashWeapon;
         [SerializeField] private GameObject dashPreviewObj;
 
-        [Header("Pull Setting")] 
-        [SerializeField]private float pullTime;
+        [Header("Pull Setting")] [SerializeField]
+        private float pullTime;
+
         [SerializeField] private float pullMaxDistance;
+        [SerializeField] private GameObject pullVisualizeObject;
         private bool _stopExtend;
         private IPullable _currentPullObject;
-        private PullDetect _pullDetect;
+
 
         private CharacterController _controller;
 
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
-            _pullDetect ??= GetComponentInChildren<PullDetect>();
+        }
+
+        private void Start()
+        {
+            pullVisualizeObject.transform.localScale = Vector3.zero;
+        }
+
+        private void Update()
+        {
         }
 
         public void Move(Vector3 dir)
@@ -58,8 +68,14 @@ namespace _.Scripts.Player
 
         private Vector3 _dashDir;
 
-        public void ShowDashDirection()
+        public void ShowDashDirection(bool isShow)
         {
+            if (!isShow)
+            {
+                dashPreviewObj.SetActive(false);
+                return;
+            }
+
             _dashDir = GetDirection();
             dashPreviewObj.SetActive(true);
             dashPreviewObj.transform.LookAt(_dashDir);
@@ -81,7 +97,6 @@ namespace _.Scripts.Player
 
             Observable.Timer(TimeSpan.FromSeconds(dashTime)).Subscribe(_ =>
             {
-                Debug.Log("end dash");
                 timerSubscription.Dispose();
                 dashWeapon.SetActive(false);
             });
@@ -106,50 +121,49 @@ namespace _.Scripts.Player
         #endregion
 
         #region Pull
+        //注意地圖或是周遭物件不是IgnoreRayacst
+
+        private readonly List<IPullable> _pullableObject = new List<IPullable>();
 
         public void SetPullTarget()
         {
-            _pullDetect.SetDetectRange(pullMaxDistance);
-            GetTarget();
-            SetTargetPullDirection();
+            pullVisualizeObject.transform.localScale = new Vector3(
+                pullMaxDistance * 2, 1, pullMaxDistance * 2);
+            Time.timeScale = 0f;
+
+            if (Input.GetMouseButton(0)) GetTarget();
+            if (_currentPullObject != null) SetTargetPullDirection();
         }
 
         void GetTarget()
         {
-            if (Input.GetMouseButton(0))
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var layerMask = (1 << 7);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
-                var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                var layerMask = ~(1 << 2);
+                GameObject hitObject = hit.collider.gameObject;
+                // if (hitObject == null) return;
+                if ((hitObject.transform.position - transform.position).magnitude > pullMaxDistance) return;
 
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+                if (!hitObject.TryGetComponent<IPullable>(out var pullable)) return;
+
+                if (_currentPullObject != null)
+                    _currentPullObject.PullDirection = Vector3.zero;
+                _currentPullObject = pullable;
+                if (!_pullableObject.Contains(pullable))
                 {
-                    GameObject hitObject = hit.collider.gameObject;
-                    Debug.Log($"{hitObject.name}");
-
-                    if (hitObject == null)
-                    {
-                        return;
-                    }
-
-                    if (hitObject.TryGetComponent<IPullable>(out var pullable))
-                    {
-                        if (_currentPullObject != null)
-                            _currentPullObject.PullDirection = Vector3.zero;
-                        if (_pullDetect.PullableObjects.Contains(pullable))
-                        {
-                            _currentPullObject = pullable;
-                        }
-
-                        Debug.Log($"選中 {hitObject.name}");
-                    }
+                    _pullableObject.Add(pullable);
+                    Debug.Log($"{hitObject.name} 加入 {_pullableObject.Count}List");
                 }
             }
         }
 
         void SetTargetPullDirection()
         {
-            if (_currentPullObject == null) return;
+            Debug.Log("set pull direction");
+
             if (Input.GetMouseButtonUp(0))
             {
                 _currentPullObject = null;
@@ -162,19 +176,28 @@ namespace _.Scripts.Player
             if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity))
             {
                 hitpoint = hitInfo.point;
+                // _currentPullObject.SetVisualizePullDirection(hitpoint);
             }
 
-            // hitpoint.y = 0;
+            hitpoint.y = 0;
+
+
             _currentPullObject.PullDirection = hitpoint;
         }
 
         public void PullTarget()
         {
-            _pullDetect.SetDetectRange(0);
-            foreach (var VARIABLE in _pullDetect.PullableObjects)
+            pullVisualizeObject.transform.localScale = Vector3.zero;
+            Time.timeScale = 1;
+            if (_pullableObject.Count <= 0) return;
+
+            foreach (var target in _pullableObject)
             {
-                VARIABLE.Pull();
+                target.Pull();
+                target.PullDirection = Vector3.zero;
             }
+
+            _pullableObject.Clear();
         }
 
         #endregion
@@ -183,9 +206,7 @@ namespace _.Scripts.Player
 
         public void Fall()
         {
-            
         }
-        
 
         #endregion
     }

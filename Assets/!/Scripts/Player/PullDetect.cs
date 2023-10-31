@@ -22,7 +22,7 @@ namespace _.Scripts.Player
             if (!_pullableObject.Contains(pullable))
             {
                 _pullableObject.Add(pullable);
-                Debug.Log($"{other.gameObject.name}");
+                
             }
         }
 

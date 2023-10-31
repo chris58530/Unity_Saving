@@ -26,11 +26,12 @@ namespace _.Scripts.Player
         public override void OnLogic()
         {
             if (_input.IsPressedDash)
-                _controller.ShowDashDirection();
+                _controller.ShowDashDirection(true);
         }
 
         public override void OnExit()
-        {
+        {            _controller.ShowDashDirection(false);
+
         }
     }
 }

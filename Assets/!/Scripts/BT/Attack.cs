@@ -5,28 +5,33 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 
 
-    public class Attack : Action
+public class Attack : EnemyAction
+{
+    public SharedGameObject AttackObject;
+    public float KeepTime;
+    private float _startTime;
+
+    public override void OnStart()
     {
-        public SharedGameObject AttackObject;
-        public float KeepTime;
-        private float _startTime;
-
-        public override void OnStart()
-        {
-            AttackObject.Value.SetActive(true);
-            _startTime = Time.time;
-        }
-
-        public override TaskStatus OnUpdate()
-        {
-            if (Time.time - _startTime < KeepTime)
-                return TaskStatus.Running;
-
-            return TaskStatus.Success;
-        }
-
-        public override void OnEnd()
-        {
-            AttackObject.Value.SetActive(false);
-        }
+        AttackObject.Value.SetActive(true);
+        _startTime = Time.time;
+        animator.Play("Attack");
+        // AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        // float currentTime = stateInfo.normalizedTime * stateInfo.length;
+        //
+        // KeepTime = currentTime;
     }
+
+    public override TaskStatus OnUpdate()
+    {
+        if (Time.time - _startTime < KeepTime)
+            return TaskStatus.Running;
+
+        return TaskStatus.Success;
+    }
+
+    public override void OnEnd()
+    {
+        AttackObject.Value.SetActive(false);
+    }
+}

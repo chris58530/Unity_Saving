@@ -29,13 +29,14 @@ namespace _.Scripts.Player
             Vector2 getInput = _input.MoveVector;
             Vector3 dir = new Vector3(getInput.x, 0, getInput.y);
             _controller.Move(dir);
-            
+
             if (_input.IsPressedDash)
-                _controller.ShowDashDirection();
+                _controller.ShowDashDirection(true);
         }
 
         public override void OnExit()
         {
+            _controller.ShowDashDirection(false);
         }
     }
 }

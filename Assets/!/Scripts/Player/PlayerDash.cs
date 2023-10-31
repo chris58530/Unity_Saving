@@ -26,6 +26,7 @@ namespace _.Scripts.Player
 
         public override void OnExit()
         {
+            Debug.Log("exit dash");
         }
     }
 }

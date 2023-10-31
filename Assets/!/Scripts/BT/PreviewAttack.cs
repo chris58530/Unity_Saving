@@ -5,7 +5,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 
 
-    public class PreviewAttack : Action
+    public class PreviewAttack : EnemyAction
     {
         public SharedGameObject PreviewObject;
         public float KeepTime;

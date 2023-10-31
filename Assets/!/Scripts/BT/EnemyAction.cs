@@ -7,10 +7,13 @@ using UnityEngine;
 
 public class EnemyAction : Action
 {
-    protected NavMeshAgent NavMeshAgent;
+    protected NavMeshAgent navMeshAgent;
+    protected Animator animator;
 
     public override void OnAwake()
     {
-        NavMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        EnemyAnimator enemyAnimator = GetComponent<EnemyAnimator>();
+        animator = enemyAnimator.ani;
     }
 }
