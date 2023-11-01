@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54067adb2853624dafad40c81061c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pullDistance: 0
   visualizePullDirection: {fileID: 1706247659736216829}
 --- !u!114 &4921872001624799127
 MonoBehaviour:
@@ -489,22 +490,16 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Player","IsShared":true,"TransformmValue":0},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"PreviewObject","IsShared":true,"GameObjectmValue":1},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"AttackObject","IsShared":true,"GameObjectmValue":2},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Pos
-        (1)","IsShared":true,"TransformmValue":3},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Pos
-        (2)","IsShared":true,"TransformmValue":4},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Pos
-        (3)","IsShared":true,"TransformmValue":5}]}'
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Player","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"PreviewObject","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"AttackObject","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Pos
+        (1)","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Pos
+        (2)","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Pos
+        (3)","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"KeepDistance","IsShared":true,"SinglemValue":0}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
         startIndex: 
         dataPosition: 
-        unityObjects:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
+        unityObjects: []
         byteData: 
         byteDataArray: 
       Version: 1.7.1

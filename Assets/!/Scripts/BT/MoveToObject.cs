@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoveToObject : EnemyAction
 {
     public float Speed;
-    public float KeepDistance;
+    public SharedFloat KeepDistance;
     public SharedTransform Target;
     public bool trackPosY;
 
@@ -18,7 +18,7 @@ public class MoveToObject : EnemyAction
 
     public override TaskStatus OnUpdate()
     {
-        if (Vector3.SqrMagnitude(transform.position - Target.Value.position) < KeepDistance)
+        if (Vector3.SqrMagnitude(transform.position - Target.Value.position) < 5)
         {
             return TaskStatus.Success;
         }

@@ -9,8 +9,8 @@ namespace _.Scripts.Player
         private readonly PlayerMapInput _input;
         private readonly PlayerController _controller;
 
-        public PlayerFall(PlayerMapInput playerMapInput, 
-            PlayerController playerController, 
+        public PlayerFall(PlayerMapInput playerMapInput,
+            PlayerController playerController,
             bool needsExitTime,
             bool isGhostState = false) : base(needsExitTime,
             isGhostState)
@@ -30,8 +30,8 @@ namespace _.Scripts.Player
         }
 
         public override void OnExit()
-        {            _controller.ShowDashDirection(false);
-
+        {
+            _controller.ShowDashDirection(false);
         }
     }
 }

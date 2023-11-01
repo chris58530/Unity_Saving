@@ -540,6 +540,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2506120965838921455, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 356a191598381a3448440a1d9c061104, type: 2}
     - target: {fileID: 2606496779086969233, guid: 00d9bec10a17e6c4db0c06cb750086b3,
         type: 3}
       propertyPath: m_Layer
@@ -590,6 +595,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4066738222145056034, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 090c3e97eadf6494f9906ffa6ea0e05c, type: 2}
     - target: {fileID: 4115125610522765544, guid: 00d9bec10a17e6c4db0c06cb750086b3,
         type: 3}
       propertyPath: m_Layer
@@ -785,6 +795,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6684647897825894859, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4154
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684647897825894859, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4154
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684647897825894859, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.0405822
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684647897825894859, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.8800001
+      objectReference: {fileID: 0}
     - target: {fileID: 6719411685274818830, guid: 00d9bec10a17e6c4db0c06cb750086b3,
         type: 3}
       propertyPath: m_Layer
@@ -824,6 +854,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405442095186954322, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4154
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405442095186954322, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4154
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405442095186954322, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.0405822
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405442095186954322, guid: 00d9bec10a17e6c4db0c06cb750086b3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: 7698563947967349543, guid: 00d9bec10a17e6c4db0c06cb750086b3,
         type: 3}

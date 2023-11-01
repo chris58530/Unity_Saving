@@ -29,6 +29,7 @@ namespace _.Scripts.Player
         {
             if (_input.IsPressedDash)
                 _controller.ShowDashDirection(true);
+            _controller.Fall();
         }
 
         public override void OnExit()

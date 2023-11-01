@@ -20,6 +20,7 @@ namespace _.Scripts.Player
 
         public override void OnEnter()
         {
+            _controller.Attack();
         }
 
         public override void OnLogic()

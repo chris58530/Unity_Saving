@@ -13,6 +13,7 @@ namespace _.Scripts.Player
         [Header("Attack Setting")] [SerializeField]
         private float attackDamage;
 
+
         [SerializeField] private GameObject attackWeapon;
 
         [Header("Dash Setting")] [SerializeField]
@@ -27,24 +28,24 @@ namespace _.Scripts.Player
 
         [SerializeField] private float pullMaxDistance;
         [SerializeField] private GameObject pullVisualizeObject;
-        private bool _stopExtend;
         private IPullable _currentPullObject;
 
+        [Header("Gravity Setting")] [SerializeField]
+        private float gravity;
 
+        public bool IsGround => _controller.isGrounded;
         private CharacterController _controller;
+        private AttackDetect _attackDetect;
 
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+            _attackDetect = GetComponentInChildren<AttackDetect>();
         }
 
         private void Start()
         {
             pullVisualizeObject.transform.localScale = Vector3.zero;
-        }
-
-        private void Update()
-        {
         }
 
         public void Move(Vector3 dir)
@@ -57,11 +58,10 @@ namespace _.Scripts.Player
         public void Attack()
         {
             attackWeapon.SetActive(true);
-            // Observable.Timer(TimeSpan.FromSeconds(0.2))
-            //     .Subscribe(_ =>
-            //     {
-            //         attackWeapon.SetActive(false);
-            //     });
+
+            Observable.Timer(TimeSpan.FromSeconds(dashTime)).Subscribe(_ => { attackWeapon.SetActive(false); });
+            Vector3 dir = _attackDetect.GetAttackTarget();
+            transform.LookAt(dir);
         }
 
         #region Dash
@@ -121,6 +121,7 @@ namespace _.Scripts.Player
         #endregion
 
         #region Pull
+
         //注意地圖或是周遭物件不是IgnoreRayacst
 
         private readonly List<IPullable> _pullableObject = new List<IPullable>();
@@ -206,6 +207,8 @@ namespace _.Scripts.Player
 
         public void Fall()
         {
+            if (IsGround) return;
+            _controller.Move(transform.up * (gravity * Time.deltaTime));
         }
 
         #endregion

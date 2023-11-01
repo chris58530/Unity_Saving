@@ -137,7 +137,7 @@ MonoBehaviour:
   walkSpeed: 20
   rotateSpeed: 15
   attackDamage: 3
-  attackWeapon: {fileID: 0}
+  attackWeapon: {fileID: 6650623158812882179}
   dashSpeed: 50
   dashTime: 0.2
   dashWeapon: {fileID: 6650623159186598415}
@@ -145,6 +145,7 @@ MonoBehaviour:
   pullTime: 5
   pullMaxDistance: 30
   pullVisualizeObject: {fileID: 6650623158568710364}
+  gravity: -11.47
 --- !u!1 &6650623158247434648
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +241,6 @@ GameObject:
   - component: {fileID: 6650623158568710360}
   - component: {fileID: 6650623158568710363}
   - component: {fileID: 6650623158568710362}
-  - component: {fileID: 6650623158568710361}
   m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
@@ -326,18 +326,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6650623158568710361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6650623158568710364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c29f66c77fcea49b096b18126ac480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6650623158671350803
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,8 +435,9 @@ GameObject:
   - component: {fileID: 6650623158812882239}
   - component: {fileID: 6650623158812882238}
   - component: {fileID: 6650623158812882177}
+  - component: {fileID: 78925114}
   m_Layer: 6
-  m_Name: Cylinder
+  m_Name: AttackWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,7 +452,7 @@ Transform:
   m_GameObject: {fileID: 6650623158812882179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.000000079577, y: -0.299, z: 0.00000014124}
-  m_LocalScale: {x: 2.335048, y: 0.4278041, z: 2.335048}
+  m_LocalScale: {x: 3.2844784, y: 0.60174924, z: 3.2844784}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6650623159191811705}
@@ -533,6 +522,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &78925114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650623158812882179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c29f66c77fcea49b096b18126ac480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6650623159049296647
 GameObject:
   m_ObjectHideFlags: 0
