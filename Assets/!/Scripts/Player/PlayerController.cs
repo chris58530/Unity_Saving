@@ -11,7 +11,7 @@ namespace _.Scripts.Player
         [SerializeField] private float rotateSpeed;
 
         [Header("Attack Setting")] [SerializeField]
-        private float attackDamage;
+        public float attackTime;
 
 
         [SerializeField] private GameObject attackWeapon;
@@ -36,16 +36,19 @@ namespace _.Scripts.Player
         public bool IsGround => _controller.isGrounded;
         private CharacterController _controller;
         private AttackDetect _attackDetect;
+        private PlayerWeapon _playerWeapon;
 
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
             _attackDetect = GetComponentInChildren<AttackDetect>();
+            _playerWeapon = GetComponentInChildren<PlayerWeapon>();
         }
 
         private void Start()
         {
             pullVisualizeObject.transform.localScale = Vector3.zero;
+            attackWeapon.SetActive(false);
         }
 
         public void Move(Vector3 dir)
@@ -59,9 +62,16 @@ namespace _.Scripts.Player
         {
             attackWeapon.SetActive(true);
 
-            Observable.Timer(TimeSpan.FromSeconds(dashTime)).Subscribe(_ => { attackWeapon.SetActive(false); });
-            Vector3 dir = _attackDetect.GetAttackTarget();
-            transform.LookAt(dir);
+            Observable.Timer(TimeSpan.FromSeconds(attackTime)).Subscribe(_ => { attackWeapon.SetActive(false); });
+            Vector3 targetPos = _attackDetect.GetAttackTarget();
+            Vector3 dir = targetPos - transform.position;
+            if (_attackDetect.DamageObj.Count <= 0)
+            {
+                dir = transform.forward;
+            }
+            dir.y = 0;
+            Quaternion toRotation = Quaternion.LookRotation(dir.normalized, transform.up);
+            transform.rotation = toRotation;
         }
 
         #region Dash

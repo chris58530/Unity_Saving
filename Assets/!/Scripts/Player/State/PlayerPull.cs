@@ -1,19 +1,18 @@
 using UnityEngine;
 using UnityHFSM;
 
-namespace _.Scripts.Player
+namespace _.Scripts.Player.State
 {
-    public class PlayerFall : StateBase<PlayerState>
+    public class PlayerPull : StateBase<PlayerState>
     {
         private Animator _animator;
         private readonly PlayerMapInput _input;
         private readonly PlayerController _controller;
 
-        public PlayerFall(PlayerMapInput playerMapInput,
+        public PlayerPull(PlayerMapInput playerMapInput,
             PlayerController playerController,
             bool needsExitTime,
-            bool isGhostState = false) : base(needsExitTime,
-            isGhostState)
+            bool isGhostState = false) : base(needsExitTime, isGhostState)
         {
             _input = playerMapInput;
             _controller = playerController;
@@ -25,13 +24,13 @@ namespace _.Scripts.Player
 
         public override void OnLogic()
         {
-            if (_input.IsPressedDash)
-                _controller.ShowDashDirection(true);
+            _controller.SetPullTarget();
         }
 
         public override void OnExit()
         {
-            _controller.ShowDashDirection(false);
+
+            _controller.PullTarget();
         }
     }
 }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityHFSM;
 
-namespace _.Scripts.Player
+namespace _.Scripts.Player.State
 {
     public enum PlayerState
     {
@@ -42,7 +42,7 @@ namespace _.Scripts.Player
                     _input, _controller, false));
             _fsm.AddState(
                 PlayerState.Attack, new PlayerAttack(
-                    _input, _controller, false));
+                    _input, _controller, true));
             _fsm.AddState(
                 PlayerState.Pull, new PlayerPull(
                     _input, _controller,false));
@@ -68,12 +68,16 @@ namespace _.Scripts.Player
                 transition => _input.IsReleasedDash);
             _fsm.AddTransition(PlayerState.Idle, PlayerState.Pull,
                 transition => _input.IsPressedPull);
+            _fsm.AddTransition(PlayerState.Idle, PlayerState.Attack,
+                transition => _input.IsPressedAttack);
 
             //Walk
             _fsm.AddTransition(PlayerState.Walk, PlayerState.Dash,
                 transition => _input.IsReleasedDash);
             _fsm.AddTransition(PlayerState.Walk, PlayerState.Pull,
                 transition => _input.IsPressedPull);
+            _fsm.AddTransition(PlayerState.Walk, PlayerState.Attack,
+                transition => _input.IsPressedAttack);
 
             //Dash
             _fsm.AddTransition(PlayerState.Dash, PlayerState.Idle);
@@ -81,7 +85,10 @@ namespace _.Scripts.Player
             //Pull
             _fsm.AddTransition(PlayerState.Pull, PlayerState.Idle,
                 transition => _input.IsReleasedPull);
-
+            
+            //Attack
+            _fsm.AddTransition(PlayerState.Attack, PlayerState.Idle);
+            
             //Initialize
             _fsm.Init();
         }

@@ -1,6 +1,6 @@
 using UnityHFSM;
 
-namespace _.Scripts.Player
+namespace _.Scripts.Player.State
 {
     public class PlayerRoll : StateBase<PlayerState>
     {

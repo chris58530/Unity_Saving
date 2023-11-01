@@ -1,10 +1,10 @@
 using UnityHFSM;
 
-namespace _.Scripts.Player
+namespace _.Scripts.Player.State
 {
-    public class PlayerHurt : StateBase<PlayerState>
+    public class PlayerDead : StateBase<PlayerState>
     {
-        public PlayerHurt(bool needsExitTime, bool isGhostState = false) : base(needsExitTime, isGhostState)
+        public PlayerDead(bool needsExitTime, bool isGhostState = false) : base(needsExitTime, isGhostState)
         {
         }   public override void OnEnter()
         {

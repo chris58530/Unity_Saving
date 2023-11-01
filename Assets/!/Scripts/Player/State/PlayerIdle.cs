@@ -1,23 +1,24 @@
+using System;
 using UnityEngine;
 using UnityHFSM;
-using System;
 using UniRx;
 
-namespace _.Scripts.Player
+namespace _.Scripts.Player.State
 {
-    public class PlayerWalk : StateBase<PlayerState>
+    public class PlayerIdle : StateBase<PlayerState>
     {
+        private Animator _animator;
         private readonly PlayerMapInput _input;
         private readonly PlayerController _controller;
 
-        public PlayerWalk(
-            PlayerMapInput playerMapInput,
-            PlayerController controller,
+        public PlayerIdle(PlayerMapInput playerMapInput, 
+            PlayerController playerController, 
             bool needsExitTime,
-            bool isGhostState = false) : base(needsExitTime, isGhostState)
+            bool isGhostState = false) : base(needsExitTime,
+            isGhostState)
         {
             _input = playerMapInput;
-            _controller = controller;
+            _controller = playerController;
         }
 
         public override void OnEnter()
@@ -26,19 +27,15 @@ namespace _.Scripts.Player
 
         public override void OnLogic()
         {
-            Vector2 getInput = _input.MoveVector;
-            Vector3 dir = new Vector3(getInput.x, 0, getInput.y);
-            _controller.Move(dir);
-
             if (_input.IsPressedDash)
                 _controller.ShowDashDirection(true);
-
             _controller.Fall();
         }
 
         public override void OnExit()
         {
             _controller.ShowDashDirection(false);
+
         }
     }
 }

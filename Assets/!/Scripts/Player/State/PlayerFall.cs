@@ -1,18 +1,19 @@
 using UnityEngine;
 using UnityHFSM;
 
-namespace _.Scripts.Player
+namespace _.Scripts.Player.State
 {
-    public class PlayerAttack : StateBase<PlayerState>
+    public class PlayerFall : StateBase<PlayerState>
     {
         private Animator _animator;
         private readonly PlayerMapInput _input;
         private readonly PlayerController _controller;
 
-        public PlayerAttack(PlayerMapInput playerMapInput,
+        public PlayerFall(PlayerMapInput playerMapInput,
             PlayerController playerController,
             bool needsExitTime,
-            bool isGhostState = false) : base(needsExitTime, isGhostState)
+            bool isGhostState = false) : base(needsExitTime,
+            isGhostState)
         {
             _input = playerMapInput;
             _controller = playerController;
@@ -20,16 +21,17 @@ namespace _.Scripts.Player
 
         public override void OnEnter()
         {
-            _controller.Attack();
         }
 
         public override void OnLogic()
         {
-         
+            if (_input.IsPressedDash)
+                _controller.ShowDashDirection(true);
         }
 
         public override void OnExit()
         {
+            _controller.ShowDashDirection(false);
         }
     }
 }

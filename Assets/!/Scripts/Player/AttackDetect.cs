@@ -7,17 +7,15 @@ namespace _.Scripts.Player
     public class AttackDetect : MonoBehaviour
     {
         private readonly List<GameObject> _damageObj = new List<GameObject>();
-
+        public List<GameObject> DamageObj => _damageObj;
 
         public Vector3 GetAttackTarget()
         {
-            if (_damageObj.Count <= 0) return transform.forward;
-
             float closestDistance = 100;
-            Vector3 targetPos = Vector3.zero;
+            var targetPos = Vector3.zero;
             foreach (var target in _damageObj)
             {
-                float distance = Vector3.Distance(target.transform.position, transform.position);
+                var distance = Vector3.Distance(target.transform.position, transform.position);
 
                 if (distance < closestDistance)
                 {
@@ -33,10 +31,10 @@ namespace _.Scripts.Player
         {
             if (!other.gameObject.TryGetComponent<IDamageable>(out var damageable)) return;
 
-            if (!_damageObj.Contains(other.gameObject))
-            {
-                _damageObj.Add(other.gameObject);
-            }
+            if (_damageObj.Contains(other.gameObject)) return;
+            _damageObj.Add(other.gameObject);
+
+            Debug.Log($"AttackDetect : {other.gameObject.name}");
         }
 
         private void OnTriggerExit(Collider other)

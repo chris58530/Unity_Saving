@@ -11,13 +11,10 @@ namespace _.Scripts.Enemy
 
         private BehaviorTree _bt;
         private Rigidbody _rb;
-        private MeleeEnemyData _meleeEnemyData;
-        
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
             _bt = GetComponent<BehaviorTree>();
-        
         }
 
         private void Start()
@@ -28,7 +25,6 @@ namespace _.Scripts.Enemy
 
         private void Update()
         {
-            Debug.Log(PullDirection);
 
             if (PullDirection != Vector3.zero)
             {
@@ -54,5 +50,6 @@ namespace _.Scripts.Enemy
                 visualizePullDirection.transform.position.y, PullDirection.z);
             visualizePullDirection.transform.LookAt(look);
         }
+
     }
 }
