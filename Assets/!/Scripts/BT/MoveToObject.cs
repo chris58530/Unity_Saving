@@ -7,7 +7,7 @@ public class MoveToObject : EnemyAction
 {
     public float Speed;
     public SharedFloat KeepDistance;
-    public SharedTransform Target;
+    public SharedGameObject Target;
     public bool trackPosY;
 
     public override void OnStart()
@@ -18,7 +18,7 @@ public class MoveToObject : EnemyAction
 
     public override TaskStatus OnUpdate()
     {
-        if (Vector3.SqrMagnitude(transform.position - Target.Value.position) < 5)
+        if (Vector3.SqrMagnitude(transform.position - Target.Value.transform.position) < KeepDistance.Value)
         {
             return TaskStatus.Success;
         }
@@ -28,7 +28,7 @@ public class MoveToObject : EnemyAction
         // transform.LookAt(tartgetPos);
         //
         // transform.position = Vector3.MoveTowards(transform.position, Target.Value.position, Speed * Time.deltaTime);
-        navMeshAgent.SetDestination(Target.Value.position);
+        navMeshAgent.SetDestination(Target.Value.transform.position);
         return TaskStatus.Running;
     }
 
