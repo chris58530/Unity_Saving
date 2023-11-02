@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityHFSM;
 
 namespace _.Scripts.Player.State
@@ -21,12 +22,13 @@ namespace _.Scripts.Player.State
         private StateMachine<PlayerState> _fsm;
         private PlayerMapInput _input;
         private PlayerController _controller;
-        private Animator _animator;
+        [SerializeField]private Animator animator;
 
         private void Awake()
         {
             _input = GetComponent<PlayerMapInput>();
             _controller = GetComponent<PlayerController>();
+            // _animator = GetComponentInChildren<Animator>();
         }
 
         private void Start()
@@ -36,19 +38,19 @@ namespace _.Scripts.Player.State
             //_fsm Add New State
             _fsm.AddState(
                 PlayerState.Idle, new PlayerIdle(
-                    _input, _controller, false));
+                    _input, _controller,animator, false));
             _fsm.AddState(
                 PlayerState.Walk, new PlayerWalk(
-                    _input, _controller, false));
+                    _input, _controller,animator, false));
             _fsm.AddState(
                 PlayerState.Attack, new PlayerAttack(
-                    _input, _controller, true));
+                    _input, _controller,animator, true));
             _fsm.AddState(
                 PlayerState.Pull, new PlayerPull(
-                    _input, _controller,false));
+                    _input, _controller,animator, false));
             _fsm.AddState(
                 PlayerState.Dash, new PlayerDash(
-                    _controller, true));
+                    _controller,animator, true));
             _fsm.AddState(
                 PlayerState.Hurt, new PlayerHurt(
                     false));
@@ -85,10 +87,10 @@ namespace _.Scripts.Player.State
             //Pull
             _fsm.AddTransition(PlayerState.Pull, PlayerState.Idle,
                 transition => _input.IsReleasedPull);
-            
+
             //Attack
             _fsm.AddTransition(PlayerState.Attack, PlayerState.Idle);
-            
+
             //Initialize
             _fsm.Init();
         }

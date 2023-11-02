@@ -11,18 +11,21 @@ namespace _.Scripts.Player.State
         private readonly PlayerMapInput _input;
         private readonly PlayerController _controller;
 
-        public PlayerIdle(PlayerMapInput playerMapInput, 
-            PlayerController playerController, 
+        public PlayerIdle(PlayerMapInput playerMapInput,
+            PlayerController playerController, Animator animator,
             bool needsExitTime,
             bool isGhostState = false) : base(needsExitTime,
             isGhostState)
         {
             _input = playerMapInput;
             _controller = playerController;
+            _animator = animator;
         }
 
         public override void OnEnter()
         {
+            _animator.Play("Idle");
+
         }
 
         public override void OnLogic()
@@ -35,7 +38,6 @@ namespace _.Scripts.Player.State
         public override void OnExit()
         {
             _controller.ShowDashDirection(false);
-
         }
     }
 }

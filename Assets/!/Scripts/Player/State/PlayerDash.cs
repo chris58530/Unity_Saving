@@ -7,16 +7,21 @@ namespace _.Scripts.Player.State
     {
         private readonly PlayerController _controller;
         private Timer _timer;
-
-        public PlayerDash(PlayerController controller, bool needsExitTime, bool isGhostState = false) : base(
+        private Animator _animator;
+        public PlayerDash(PlayerController controller, 
+            Animator animator,
+            bool needsExitTime, bool isGhostState = false) : base(
             needsExitTime, isGhostState)
         {
             _controller = controller;
+            _animator = animator;
+
         }
 
         public override void OnEnter()
         {
             _timer = new Timer();
+            _animator.Play("Dash");
 
             _controller.Dash();
         }

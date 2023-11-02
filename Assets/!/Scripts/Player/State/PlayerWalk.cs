@@ -9,19 +9,22 @@ namespace _.Scripts.Player.State
     {
         private readonly PlayerMapInput _input;
         private readonly PlayerController _controller;
+        private Animator _animator;
 
         public PlayerWalk(
             PlayerMapInput playerMapInput,
-            PlayerController controller,
+            PlayerController controller, Animator animator,
             bool needsExitTime,
             bool isGhostState = false) : base(needsExitTime, isGhostState)
         {
             _input = playerMapInput;
             _controller = controller;
+            _animator = animator;
         }
 
         public override void OnEnter()
         {
+            _animator.Play("Walk");
         }
 
         public override void OnLogic()
