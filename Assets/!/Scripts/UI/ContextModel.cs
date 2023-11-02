@@ -6,14 +6,15 @@ using UniRx;
 
 namespace _.Scripts.UI
 {
-    public class ContextModel:MonoBehaviour
+    public class ContextModel : MonoBehaviour
     {
-        public float Hp;
-        public float AbilityValue;
-    
-        void Inint()
-        {
-        }
-      
+        public ReactiveProperty<float> hpValue = new ReactiveProperty<float>();
+        public ReactiveProperty<float> abilityValue = new ReactiveProperty<float>();
+
+     
+
+       
+
+       
     }
 }

@@ -5,8 +5,8 @@ namespace _.Scripts.UI
 {
     public class ContextView : MonoBehaviour
     {
-        public GameObject[] abilityValues;
         public Image HpImage;
+        public Image AbilityImage;
 
         public void SetAbilityQuanity(GameObject[] values, int count)
         {
