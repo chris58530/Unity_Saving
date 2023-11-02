@@ -10,16 +10,19 @@ namespace _.Scripts.Player.State
         private readonly PlayerController _controller;
 
         public PlayerPull(PlayerMapInput playerMapInput,
-            PlayerController playerController,
+            PlayerController playerController, Animator animator,
             bool needsExitTime,
             bool isGhostState = false) : base(needsExitTime, isGhostState)
         {
             _input = playerMapInput;
             _controller = playerController;
+            _animator = animator;
+
         }
 
         public override void OnEnter()
         {
+            _animator.Play("Pull");
         }
 
         public override void OnLogic()
@@ -29,7 +32,6 @@ namespace _.Scripts.Player.State
 
         public override void OnExit()
         {
-
             _controller.PullTarget();
         }
     }

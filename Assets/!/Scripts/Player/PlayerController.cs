@@ -115,7 +115,7 @@ namespace _.Scripts.Player
         Vector3 GetDirection()
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            var layerMask = ~(1 << 10);
+            var layerMask = 1 << 9;
             RaycastHit hit;
             var hitpoint = Vector3.zero;
             if (Physics.Raycast(ray, out hit, 1000, layerMask))
