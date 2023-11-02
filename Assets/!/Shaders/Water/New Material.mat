@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: acid
-  m_Shader: {fileID: -6465566751694194690, guid: 08a65023ff950fe4fb08f8a85228048a,
+  m_Name: New Material
+  m_Shader: {fileID: -6465566751694194690, guid: ae32f36970a7c8940b2ce94a73a16aaa,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -73,10 +73,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _acid:
-        m_Texture: {fileID: 2800000, guid: cfbdaeaaf682dcb4286f3b6da17c485e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -92,22 +88,17 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _AlphaToMask: 0
     - _Blend: 0
-    - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth: 0.349
-    - _DepthOpacity: 0.265
+    - _Depth: 0.431
+    - _DepthOpacity: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _DstBlendAlpha: 0
-    - _Edgescale: 0
-    - _Edgespeed: 1
     - _EnvironmentReflections: 1
     - _Foam_noise_scale: 0
     - _Foam_rippled_speed: 0
@@ -115,9 +106,9 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NoiseVaule: 10
-    - _Noisespeed: 0.112
-    - _OFFsetspeed: 0.01
+    - _NoiseVaule: 1.44
+    - _Noisespeed: 0.106
+    - _OFFsetspeed: 0.095
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -128,7 +119,6 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SrcBlendAlpha: 1
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -136,28 +126,24 @@ Material:
     - _ambient_occlusion: 1
     - _celldensity: 0
     - _depthfade: 0
-    - _foamdepth: 0.1
-    - _metallic: 0
+    - _foamdepth: 4.7
     - _smothess: 0
     - _waterhight: 0
     - _waternoisescale: 0
-    - _waterspeed: 0
+    - _waterspeed: 0.1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Basetile: {r: 9.48, g: 8, b: 0, a: 0}
+    - _Basetile: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Depth: {r: 0, g: 0, b: 0, a: 0}
-    - _DepthOpacity: {r: 0, g: 0, b: 0, a: 0}
-    - _Edgecolor: {r: 0.7075472, g: 0.043387346, b: 0.043387346, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Radial_Shear: {r: 1, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _deepcolor: {r: 0, g: 0, b: 0, a: 0}
     - _foamcolor: {r: 0, g: 0, b: 0, a: 0}
-    - _noisetile: {r: 20, g: 20, b: 0, a: 0}
-    - _shallowcolor: {r: 0, g: 0.23933801, b: 0.7735849, a: 0}
+    - _noisetile: {r: 5.57, g: 7.45, b: 0, a: 0}
+    - _shallowcolor: {r: 0.3186632, g: 0.5165344, b: 0.8773585, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &8011473330147259151
+--- !u!114 &1268272311743323265
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,4 +155,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 5
