@@ -1155,6 +1155,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Father Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3895891509289481953, guid: 7d5087530092c8c46aba42644f32bd95,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3895891509289481954, guid: 7d5087530092c8c46aba42644f32bd95,
         type: 3}
       propertyPath: m_RootOrder
@@ -1509,6 +1514,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -4.443798
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760980867988645104, guid: 7d5087530092c8c46aba42644f32bd95,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7794772698091833429, guid: 7d5087530092c8c46aba42644f32bd95,
         type: 3}
