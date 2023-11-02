@@ -30,7 +30,7 @@ namespace _.Scripts.Player
         private void OnTriggerEnter(Collider other)
         {
             if (!other.gameObject.TryGetComponent<IDamageable>(out var damageable)) return;
-
+            if (other.gameObject.layer != 7) return;
             if (_damageObj.Contains(other.gameObject)) return;
             _damageObj.Add(other.gameObject);
 

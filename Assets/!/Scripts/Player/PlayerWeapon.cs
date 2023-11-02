@@ -7,11 +7,12 @@ namespace _.Scripts.Player
     {
         [SerializeField] private int attackValue;
 
-      
 
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent<IDamageable>(out var damageObj)) return;
+            if (other.gameObject.layer != 7) return;
+
             damageObj.OnTakeDamage(attackValue);
         }
     }
