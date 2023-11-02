@@ -124,105 +124,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 171122982a6053d4882f794b8a4664b1, type: 2}
---- !u!1001 &23588925
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 154131048}
-    m_Modifications:
-    - target: {fileID: 5987558750819041444, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: pullDistance
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538443063891819943, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 972231047}
-    - target: {fileID: 8538443063891819943, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[6]
-      value: 
-      objectReference: {fileID: 972231047}
-    - target: {fileID: 8666047682244083270, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: playerRef
-      value: 
-      objectReference: {fileID: 972231046}
-    - target: {fileID: 8802077135983457083, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463208, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemySet (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463208, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e0e644b3f17a0d140be453f4f9941b26, type: 3}
 --- !u!1 &96200398
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +501,6 @@ Transform:
   - {fileID: 700522770}
   - {fileID: 972231047}
   - {fileID: 1409893721}
-  - {fileID: 1221614773}
   - {fileID: 282679189}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -730,7 +630,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 154131048}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 32.2, z: 0}
 --- !u!114 &282679190
 MonoBehaviour:
@@ -1097,12 +997,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 6650623158138656414}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &972231046 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6650623158244362008, guid: efd14440ccebf1b40a35b4bcab778964,
-    type: 3}
-  m_PrefabInstance: {fileID: 6650623158138656414}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &972231047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6650623158244362009, guid: efd14440ccebf1b40a35b4bcab778964,
@@ -1278,12 +1172,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1221614773 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9170642133590463211, guid: e0e644b3f17a0d140be453f4f9941b26,
-    type: 3}
-  m_PrefabInstance: {fileID: 23588925}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1222679476 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2690042480804267618, guid: efd14440ccebf1b40a35b4bcab778964,
@@ -1395,21 +1283,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 154131048}
     m_Modifications:
-    - target: {fileID: 8538443063891819943, guid: e0e644b3f17a0d140be453f4f9941b26,
+    - target: {fileID: 5383514008905129558, guid: e0e644b3f17a0d140be453f4f9941b26,
         type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
       value: 
       objectReference: {fileID: 972231047}
-    - target: {fileID: 8538443063891819943, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[6]
-      value: 
-      objectReference: {fileID: 972231047}
-    - target: {fileID: 8666047682244083270, guid: e0e644b3f17a0d140be453f4f9941b26,
-        type: 3}
-      propertyPath: playerRef
-      value: 
-      objectReference: {fileID: 972231046}
     - target: {fileID: 9170642133590463208, guid: e0e644b3f17a0d140be453f4f9941b26,
         type: 3}
       propertyPath: m_Name
