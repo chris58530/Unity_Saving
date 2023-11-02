@@ -23,6 +23,10 @@ namespace _.Scripts.Player.State
         private PlayerMapInput _input;
         private PlayerController _controller;
         [SerializeField]private Animator animator;
+        //Coldwater//
+        [SerializeField] private Transform _positionToSpawn;
+        [SerializeField] private GameObject _dashModel;
+
 
         private void Awake()
         {
@@ -50,7 +54,7 @@ namespace _.Scripts.Player.State
                     _input, _controller,animator, false));
             _fsm.AddState(
                 PlayerState.Dash, new PlayerDash(
-                    _controller,animator, true));
+                    _controller,animator, _positionToSpawn, _dashModel, true));
             _fsm.AddState(
                 PlayerState.Hurt, new PlayerHurt(
                     false));
