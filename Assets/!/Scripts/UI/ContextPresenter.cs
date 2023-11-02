@@ -13,27 +13,31 @@ namespace _.Scripts.UI
         protected override void Awake()
         {
             base.Awake();
-            _view ??= GetComponentInChildren<ContextView>();
-            _model ??= GetComponentInChildren<ContextModel>();
+            _view = GetComponentInChildren<ContextView>();
+            _model = GetComponentInChildren<ContextModel>();
+            
         }
         private void Start()
         {
-            _model.abilityValue.Skip(1)
-                .Subscribe(_ =>
+            _model.abilityValue.Subscribe(_ =>
                 {
-                    Debug.Log("index 改變");
+                    Debug.Log("abilityValue 改變");
+                }).AddTo(this);
+            _model.hpValue.Subscribe(_ =>
+                {
+                    Debug.Log("hpValue 改變");
                 }).AddTo(this);
         }
         [ContextMenu("UseAbility")]
         public void UseAbility()
         {
             _model.abilityValue.Value -= 1;
+            _view.UpdateAbility(_model.abilityValue.Value, _model.MaxAbility);
         }
-        [ContextMenu("GetHurt")]
-        
         public void GetHurt(float damage)
         {
             _model.hpValue.Value -= damage;
+            _view.UpdateHp(_model.hpValue.Value, _model.MaxHp);
         }
       
     }
