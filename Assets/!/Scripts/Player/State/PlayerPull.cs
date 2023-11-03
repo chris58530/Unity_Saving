@@ -1,3 +1,4 @@
+using _.Scripts.UI;
 using UnityEngine;
 using UnityHFSM;
 
@@ -22,6 +23,11 @@ namespace _.Scripts.Player.State
 
         public override void OnEnter()
         {
+            if (ContextPresenter.Instance.GetAilityCount() <= 0)
+            {
+                fsm.StateCanExit();
+            }
+            ContextPresenter.Instance.UseAbility();
             _animator.Play("Pull");
         }
 

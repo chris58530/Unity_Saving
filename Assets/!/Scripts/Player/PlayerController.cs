@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _.Scripts.Event;
 using UnityEngine;
 using UniRx;
 
@@ -50,6 +51,7 @@ namespace _.Scripts.Player
             pullVisualizeObject.transform.localScale = Vector3.zero;
             attackWeapon.SetActive(false);
         }
+      
 
         public void Move(Vector3 dir)
         {

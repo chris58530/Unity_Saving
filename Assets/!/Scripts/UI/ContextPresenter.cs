@@ -1,4 +1,5 @@
 using System;
+using _.Scripts.Event;
 using _.Scripts.Tools;
 using UniRx;
 using UnityEngine;
@@ -34,9 +35,18 @@ namespace _.Scripts.UI
             _model.abilityValue.Value -= 1;
             _view.UpdateAbility(_model.abilityValue.Value, _model.MaxAbility);
         }
+
+        public float GetAilityCount()
+        {
+            return _model.abilityValue.Value;
+        }
         public void GetHurt(float damage)
         {
             _model.hpValue.Value -= damage;
+            if (_model.hpValue.Value <= 0)
+            {
+                PlayerActions.onPlayerDead?.Invoke();
+            }
             _view.UpdateHp(_model.hpValue.Value, _model.MaxHp);
         }
       
