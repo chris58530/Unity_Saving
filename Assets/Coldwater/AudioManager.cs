@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using _.Scripts.Tools;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager:Singleton<AudioManager>
 {
-    public static AudioManager Instance;
-    public Sound[] BGMSounds, sfxSounds, UISounds;
-    public AudioSource BGMSource, sfxSource, UISourse;
-    private void Awake()
-    {
-        Instance = this;
-    }
+    public Sound[] BGMSounds, sfxSounds;
+    public AudioSource BGMSource, sfxSource, sfxSource2;
+
     private void Start()
     {
         PlayBGM("BGM");
@@ -30,19 +27,19 @@ public class AudioManager : MonoBehaviour
             BGMSource.Play();
         }
     }
-    public void PlayUI(string name)
-    {
-        Sound s = Array.Find(UISounds, x => x.name == name);
+    //public void PlayUI(string name)
+    //{
+    //    Sound s = Array.Find(UISounds, x => x.name == name);
 
-        if (s == null)
-        {
-            Debug.Log("sound not found");
-        }
-        else
-        {
-            UISourse.PlayOneShot(s.clip);
-        }
-    }
+    //    if (s == null)
+    //    {
+    //        Debug.Log("sound not found");
+    //    }
+    //    else
+    //    {
+    //        UISourse.PlayOneShot(s.clip);
+    //    }
+    //}
     public void PlaySFX(string name)
     {
         Sound s = Array.Find(sfxSounds, x => x.name == name);
@@ -55,16 +52,34 @@ public class AudioManager : MonoBehaviour
             sfxSource.PlayOneShot(s.clip);
         }
     }
+    public void PlaySFX2(string name)
+    {
+        Sound s = Array.Find(sfxSounds, x => x.name == name);
+        if (s == null)
+        {
+            Debug.Log("sound not found");
+        }
+        else
+        {
+            sfxSource2.clip = s.clip;
+            sfxSource2.Play();
+        }
+    }
+    public void StopPlaySFX2()
+    {
+        Debug.Log("Stop");
+            sfxSource2.Stop();
+    }
 
 
-    public void Button_In()
-    {
-        PlayUI("Press1");
-    }
-    public void Bottun_Press()
-    {
-        PlayUI("Press2");
-    }
+    //public void Button_In()
+    //{
+    //    PlayUI("Press1");
+    //}
+    //public void Bottun_Press()
+    //{
+    //    PlayUI("Press2");
+    //}
     public void BGMVolume(float volume)
     {
         BGMSource.volume = volume;
@@ -72,6 +87,6 @@ public class AudioManager : MonoBehaviour
     public void SFXVolume(float volume)
     {
         sfxSource.volume = volume;
-        UISourse.volume = volume;
+        //UISourse.volume = volume;
     }
 }
