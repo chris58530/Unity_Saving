@@ -25,10 +25,12 @@ namespace _.Scripts.Player.State
         public override void OnEnter()
         {
             _animator.Play("Walk");
+            AudioManager.Instance.PlaySFX2("Walk");
         }
 
         public override void OnLogic()
         {
+
             Vector2 getInput = _input.MoveVector;
             Vector3 dir = new Vector3(getInput.x, 0, getInput.y);
             _controller.Move(dir);
@@ -41,7 +43,8 @@ namespace _.Scripts.Player.State
 
         public override void OnExit()
         {
-            _controller.ShowDashDirection(false);
+            AudioManager.Instance.StopPlaySFX2();
+            _controller.ShowDashDirection(false);            
         }
     }
 }
