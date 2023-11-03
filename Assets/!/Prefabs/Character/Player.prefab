@@ -2279,7 +2279,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5683676426203325074}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1222679479
+--- !u!114 &200006525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2288,7 +2288,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2690042480804267618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8502104d1f6c3940933d1345f2596ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 493e1e3f33fa8a4428f60e089da1dff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackValue: 15

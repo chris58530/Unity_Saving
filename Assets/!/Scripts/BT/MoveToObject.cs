@@ -14,6 +14,8 @@ public class MoveToObject : EnemyAction
     {
         animator.Play("Walk");
         navMeshAgent.isStopped = false;
+        navMeshAgent.speed = 7;
+        animator.speed = 2;
     }
 
     public override TaskStatus OnUpdate()
@@ -29,11 +31,16 @@ public class MoveToObject : EnemyAction
         //
         // transform.position = Vector3.MoveTowards(transform.position, Target.Value.position, Speed * Time.deltaTime);
         navMeshAgent.SetDestination(Target.Value.transform.position);
+
         return TaskStatus.Running;
     }
 
     public override void OnEnd()
     {
         navMeshAgent.isStopped = true;
+        Vector3 targetPos = Target.Value.transform.position;
+        Vector3 dir = targetPos - transform.position;
+        Quaternion toRotation = Quaternion.LookRotation(dir.normalized, transform.up);
+        transform.rotation = toRotation;
     }
 }
