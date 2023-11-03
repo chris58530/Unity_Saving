@@ -25,6 +25,6 @@ public class EnemyHurt : MonoBehaviour, IDamageable
 
     public void OnDied()
     {
-       
+        Destroy(gameObject);
     }
 }
