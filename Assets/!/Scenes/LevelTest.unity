@@ -2544,6 +2544,11 @@ PrefabInstance:
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
       value: 
       objectReference: {fileID: 972231046}
+    - target: {fileID: 5047553701969446786, guid: 212f00ba7f1380e4298fd1c9af3403e3,
+        type: 3}
+      propertyPath: attackValue
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 8242195839456812848, guid: 212f00ba7f1380e4298fd1c9af3403e3,
         type: 3}
       propertyPath: m_AngularSpeed
