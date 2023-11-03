@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _.Scripts.Player
 {
-    public class PlayerHp : MonoBehaviour,IDamageable
+    public class PlayerHp : MonoBehaviour, IDamageable
     {
         public bool getAttack;
         public bool Dead;
@@ -15,6 +15,7 @@ namespace _.Scripts.Player
         {
             PlayerActions.onPlayerDead += OnDied;
         }
+
         private void OnDisable()
         {
             PlayerActions.onPlayerDead -= OnDied;
@@ -29,7 +30,7 @@ namespace _.Scripts.Player
         public void OnDied()
         {
             Dead = true;
-           Invoke(nameof(ChangeScene),1);
+            Invoke(nameof(ChangeScene), 5);
         }
 
         void ChangeScene()
