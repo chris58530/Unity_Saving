@@ -48,7 +48,6 @@ namespace _.Scripts.Player.State
             timeSinceLastGenerate += Time.deltaTime;
             if (!isGeneratingDashModel && timeSinceLastGenerate >= generateInterval)
             {
-                Debug.Log(timeSinceLastGenerate);
                 isGeneratingDashModel = true;
                 Spawn();
                 timeSinceLastGenerate = 0f;
