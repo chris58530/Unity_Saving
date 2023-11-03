@@ -6,8 +6,8 @@ using _.Scripts.Tools;
 
 public class AudioManager:Singleton<AudioManager>
 {
-    public Sound[] BGMSounds, sfxSounds,sfxLoop;
-    public AudioSource BGMSource, sfxSource, sfxSource2;
+    public Sound[] BGMSounds, sfxSounds,sfxLoop,enemyLoop;
+    public AudioSource BGMSource, sfxSource, sfxSource2,enemySfxLoop;
 
     private void Start()
     {
@@ -67,10 +67,25 @@ public class AudioManager:Singleton<AudioManager>
     }
     public void StopPlaySFX2()
     {
-        Debug.Log("Stop");
             sfxSource2.Stop();
     }
-
+    public void PlayEnemyLoop(string name)
+    {
+        Sound s = Array.Find(enemyLoop, x => x.name == name);
+        if (s == null)
+        {
+            Debug.Log("sound not found");
+        }
+        else
+        {
+            enemySfxLoop.clip = s.clip;
+            enemySfxLoop.Play();
+        }
+    }
+    public void StopEnemyLoop()
+    {
+        enemySfxLoop.Stop();
+    }
 
     //public void Button_In()
     //{
