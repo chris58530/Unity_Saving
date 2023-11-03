@@ -32,6 +32,7 @@ namespace _.Scripts.Player.State
 
         public override void OnEnter()
         {
+            AudioManager.Instance.PlaySFX("Dash");
             if (ContextPresenter.Instance.GetAilityCount() <= 0)
             {
                 fsm.StateCanExit();
@@ -39,8 +40,7 @@ namespace _.Scripts.Player.State
             ContextPresenter.Instance.UseAbility();
             _timer = new Timer();
             _animator.Play("Dash");
-            _controller.Dash();
-         
+            _controller.Dash();            
         }
 
         public override void OnLogic()

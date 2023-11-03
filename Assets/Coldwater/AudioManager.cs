@@ -6,7 +6,7 @@ using _.Scripts.Tools;
 
 public class AudioManager:Singleton<AudioManager>
 {
-    public Sound[] BGMSounds, sfxSounds;
+    public Sound[] BGMSounds, sfxSounds,sfxLoop;
     public AudioSource BGMSource, sfxSource, sfxSource2;
 
     private void Start()
@@ -54,7 +54,7 @@ public class AudioManager:Singleton<AudioManager>
     }
     public void PlaySFX2(string name)
     {
-        Sound s = Array.Find(sfxSounds, x => x.name == name);
+        Sound s = Array.Find(sfxLoop, x => x.name == name);
         if (s == null)
         {
             Debug.Log("sound not found");

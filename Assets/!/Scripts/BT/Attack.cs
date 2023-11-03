@@ -13,7 +13,7 @@ public class Attack : EnemyAction
 
     public override void OnStart()
     {
-        AttackObject.Value.SetActive(true);
+        //AttackObject.Value.SetActive(true);
         _startTime = Time.time;
         animator.Play("Attack");
         animator.speed = 1;

@@ -26,6 +26,7 @@ namespace _.Scripts.Player.State
             _timer = new Timer();
             _animator.Play("Attack");
             _controller.Attack();
+            AudioManager.Instance.PlaySFX("Attack");
         }
 
         public override void OnLogic()

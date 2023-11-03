@@ -8,6 +8,7 @@ namespace _.Scripts.Player.State
         {
         }   public override void OnEnter()
         {
+            AudioManager.Instance.PlaySFX("Die");
         }
 
         public override void OnLogic()
