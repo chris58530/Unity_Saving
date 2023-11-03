@@ -11,5 +11,9 @@ public class ToNext : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }
+        if (other.gameObject.name == "DeathZone")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
     }
 }
