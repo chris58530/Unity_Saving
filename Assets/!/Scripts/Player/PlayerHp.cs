@@ -5,8 +5,12 @@ using UnityEngine;
 
 namespace _.Scripts.Player
 {
-    public class PlayerHurt : MonoBehaviour,IDamageable
+    public class PlayerHp : MonoBehaviour,IDamageable
     {
+        public bool getAttack;
+        public bool Dead;
+
+
         private void OnEnable()
         {
             PlayerActions.onPlayerDead += OnDied;
@@ -19,9 +23,16 @@ namespace _.Scripts.Player
         public void OnTakeDamage(int value)
         {
             ContextPresenter.Instance.GetHurt(value);
+            getAttack = true;
         }
 
         public void OnDied()
+        {
+            Dead = true;
+           Invoke(nameof(ChangeScene),1);
+        }
+
+        void ChangeScene()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }

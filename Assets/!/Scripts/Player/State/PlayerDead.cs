@@ -1,14 +1,27 @@
+using UnityEngine;
 using UnityHFSM;
 
 namespace _.Scripts.Player.State
 {
     public class PlayerDead : StateBase<PlayerState>
     {
-        public PlayerDead(bool needsExitTime, bool isGhostState = false) : base(needsExitTime, isGhostState)
+        private Animator _animator;
+        private PlayerHp _playerHp;
+
+        public PlayerDead(
+            Animator animator,
+            PlayerHp playerHp,
+            bool needsExitTime, bool isGhostState = false) : base(needsExitTime, isGhostState)
         {
-        }   public override void OnEnter()
+            _animator = animator;
+            _playerHp = playerHp;
+        }
+
+        public override void OnEnter()
         {
             AudioManager.Instance.PlaySFX("Die");
+            _animator.Play("Dead");
+            Debug.Log("palyer dead !!");
         }
 
         public override void OnLogic()
@@ -17,6 +30,7 @@ namespace _.Scripts.Player.State
 
         public override void OnExit()
         {
+            _playerHp.Dead = false;
         }
     }
 }

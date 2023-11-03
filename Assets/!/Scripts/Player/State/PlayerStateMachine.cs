@@ -22,7 +22,10 @@ namespace _.Scripts.Player.State
         private StateMachine<PlayerState> _fsm;
         private PlayerMapInput _input;
         private PlayerController _controller;
-        [SerializeField]private Animator animator;
+        private PlayerHp _playerHp;
+
+        [SerializeField] private Animator animator;
+
         //Coldwater//
         [SerializeField] private Transform _positionToSpawn;
         [SerializeField] private GameObject _dashModel;
@@ -32,6 +35,7 @@ namespace _.Scripts.Player.State
         {
             _input = GetComponent<PlayerMapInput>();
             _controller = GetComponent<PlayerController>();
+            _playerHp = GetComponent<PlayerHp>();
             // _animator = GetComponentInChildren<Animator>();
         }
 
@@ -42,28 +46,28 @@ namespace _.Scripts.Player.State
             //_fsm Add New State
             _fsm.AddState(
                 PlayerState.Idle, new PlayerIdle(
-                    _input, _controller,animator, false));
+                    _input, _controller, animator, false));
             _fsm.AddState(
                 PlayerState.Walk, new PlayerWalk(
-                    _input, _controller,animator, false));
+                    _input, _controller, animator, false));
             _fsm.AddState(
                 PlayerState.Attack, new PlayerAttack(
-                    _input, _controller,animator, true));
+                    _input, _controller, animator, true));
             _fsm.AddState(
                 PlayerState.Pull, new PlayerPull(
-                    _input, _controller,animator, false));
+                    _input, _controller, animator, false));
             _fsm.AddState(
                 PlayerState.Dash, new PlayerDash(
-                    _controller,animator, _positionToSpawn, _dashModel, true));
+                    _controller, animator, _positionToSpawn, _dashModel, true));
             _fsm.AddState(
                 PlayerState.Hurt, new PlayerHurt(
-                    false));
+                    _controller, animator, _playerHp, true));
             _fsm.AddState(
                 PlayerState.Roll, new PlayerRoll(
                     false));
             _fsm.AddState(
                 PlayerState.Dead, new PlayerDead(
-                    false));
+                    animator, _playerHp,false));
 
             //_fsm Transition
 
@@ -76,6 +80,10 @@ namespace _.Scripts.Player.State
                 transition => _input.IsPressedPull);
             _fsm.AddTransition(PlayerState.Idle, PlayerState.Attack,
                 transition => _input.IsPressedAttack);
+            _fsm.AddTransition(PlayerState.Idle, PlayerState.Hurt,
+                transition => _playerHp.getAttack);
+            _fsm.AddTransition(PlayerState.Idle, PlayerState.Dead,
+                transition => _playerHp.Dead);
 
             //Walk
             _fsm.AddTransition(PlayerState.Walk, PlayerState.Dash,
@@ -84,7 +92,10 @@ namespace _.Scripts.Player.State
                 transition => _input.IsPressedPull);
             _fsm.AddTransition(PlayerState.Walk, PlayerState.Attack,
                 transition => _input.IsPressedAttack);
-
+            _fsm.AddTransition(PlayerState.Walk, PlayerState.Hurt,
+                transition => _playerHp.getAttack);
+            _fsm.AddTransition(PlayerState.Walk, PlayerState.Dead,
+                transition => _playerHp.Dead);
             //Dash
             _fsm.AddTransition(PlayerState.Dash, PlayerState.Idle);
 
@@ -94,7 +105,12 @@ namespace _.Scripts.Player.State
 
             //Attack
             _fsm.AddTransition(PlayerState.Attack, PlayerState.Idle);
-
+            _fsm.AddTransition(PlayerState.Attack, PlayerState.Hurt);
+            
+            //Hurt
+            _fsm.AddTransition(PlayerState.Hurt, PlayerState.Idle);
+            _fsm.AddTransition(PlayerState.Hurt, PlayerState.Dead,
+                transition => _playerHp.Dead);
             //Initialize
             _fsm.Init();
         }
