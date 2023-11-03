@@ -15,6 +15,7 @@ namespace _.Scripts.Player
             var targetPos = Vector3.zero;
             foreach (var target in _damageObj)
             {
+                if (target.gameObject == null) _damageObj.Remove(target);
                 var distance = Vector3.Distance(target.transform.position, transform.position);
 
                 if (distance < closestDistance)
